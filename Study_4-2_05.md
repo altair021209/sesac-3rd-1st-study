@@ -18,27 +18,40 @@
 *코드구현
 
 import sys
+
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
+
 A = list(map(int, input().split()))
 
 S = [0] * n      # 누적합 배열
+
 C = [0] * m      # 나머지 개수 카운트 배열
+
 S[0] = A[0]
+
 answer = 0
 
 for i in range(1, n):       #합배열
+
     S[i] = S[i-1] + A[i]
 
-for i in range(n):           
+for i in range(n):      
+
     remainder = S[i] % m     #나머지 계산
+    
     if remainder == 0:       #나머지가 0인 경우 정답에 누적
+    
         answer += 1
+        
     C[remainder] += 1        #나머지 카운팅
+    
 
 for i in range(m):           #나머지 빈도수로 쌍의 개수 계산해서 정답에 누적
+
     if C[i] > 1:
+    
         answer += (C[i] * (C[i] - 1) // 2)
 
 print(answer)
