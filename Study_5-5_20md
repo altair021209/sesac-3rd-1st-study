@@ -1,0 +1,28 @@
+#병합정렬
+
+병합정렬은 분할과 정복 방식을 ㅅ용해 데이터를 분할하고 집합을 정렬하며 합치는 알고리즘
+
+그룹을 N/2^i 개로 나누어서 정렬을 시행한다
+
+<img width="2098" height="2119" alt="image" src="https://github.com/user-attachments/assets/9e3192ad-69f0-40a1-bcdf-6e7111f25da7" />
+
+병합정렬은 투 포인터에 의해 정렬된다
+
+
+#수 정렬하기2
+*그룹을 N/^i 개로 나누고, 각 그룹을 병합하는 과정에서 오름차순 정렬한다 
+
+```python
+importsys
+input = sys.stdin.readline
+
+def merge_sort
+
+
+
+
+
+
+
+
+```
