@@ -27,10 +27,10 @@
 
 *코드 구현
 ```python
-N = int(input())
-A = [[] for _ in range(N)]
-visited = [False] * (N)
-D = [0] * (N)
+N = int(input())             # N개의 재료
+A = [[] for _ in range(N)]   # 그래프 저장할 이중 리스트
+visited = [False] * (N)      # 탐색여부
+D = [0] * (N)                # 각 재료의 비율에 따른 양 저장
 lcm = 1
 
 def gcd(a, b):              # 최대공약수
@@ -47,14 +47,14 @@ def DFS(v):                 #DFS 탐색 함수 구현
             D[next] = D[v] * i[2] // i[1]
             DFS(next)
 
-for i in range(N - 1):
+for i in range(N - 1):       # 그래프를 이중리스트에 저장
     a, b, p, q = map(int, input().split())
     A[a].append((b, p, q))
     A[b].append((a, q, p))
     lcm = lcm * (p * q // gcd(p, q))        #최소 공배수는 두 수의 곱을 최대 공약수로 나눈 것
 
 D[0] = lcm
-DFS(0)
+DFS(0)              # DFS(0)->DFS(4)->(for문 :노드0 패스, 노드1->DFS(1), 노드2->DFS(2),노드3->DFS(3))
 mgcd = D[0]
 
 for i in range(1, N):
@@ -62,4 +62,12 @@ for i in range(1, N):
 
 for i in range(N)::
     print(int(D[i] // mgcd), end=' ')  
+
 ```
+
+* 그래프가 저장되는 모양
+A[0] = [(4,1,1)]
+A[1] = [(4,3,1)]
+A[2] = [(4,5,1)]
+A[3] = [(4,7,1)]
+A[4] = [(0,1,1), (1,3,1), (2,5,1), (3,7,1)]
