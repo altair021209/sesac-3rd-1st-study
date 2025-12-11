@@ -27,10 +27,11 @@ A = [0] * (1000001)        # 소수 여부 저장 리스트 초기화
 for i in range(2,len(A)):  #1을 제외한 수를 입력
     A[i]=i
 
-for i in range(2, len(A)):
-    if A[i] == 0:          # 아직 걸러지지 않은 수 = 소수 후보
-        for j in range(i + i, len(A), i):
-            A[j] = 0       # 배수는 소수가 아님
+for i in range(2, int(math.sqrt(len(A))+1)):
+    if A[i] == 0:           # 소수가 아닌 수
+        continue          
+    for j in range(i + i, len(A), i):
+        A[j] = 0       # 배수는 소수가 아님
 
 def isPalindrome(target):
     temp = list(str(target))  # 문자열로 변환
