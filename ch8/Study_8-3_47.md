@@ -39,6 +39,15 @@ def gcd(a, b):              # 최대공약수
     else: 
         return gcd(b, a % b)
 
+for i in range(N - 1):       # 그래프를 이중리스트에 저장
+    a, b, p, q = map(int, input().split())
+    A[a].append((b, p, q))
+    A[b].append((a, q, p))
+    lcm = lcm * (p * q // gcd(p, q))        #최소 공배수는 두 수의 곱을 최대 공약수로 나눈 것
+
+D[0] = lcm
+        
+
 def DFS(v):                 #DFS 탐색 함수 구현
     visited[v] = True
     for i in A[v]:
@@ -47,13 +56,7 @@ def DFS(v):                 #DFS 탐색 함수 구현
             D[next] = D[v] * i[2] // i[1]
             DFS(next)
 
-for i in range(N - 1):       # 그래프를 이중리스트에 저장
-    a, b, p, q = map(int, input().split())
-    A[a].append((b, p, q))
-    A[b].append((a, q, p))
-    lcm = lcm * (p * q // gcd(p, q))        #최소 공배수는 두 수의 곱을 최대 공약수로 나눈 것
 
-D[0] = lcm
 DFS(0)              # DFS(0)->DFS(4)->(for문 :노드0 패스, 노드1->DFS(1), 노드2->DFS(2),노드3->DFS(3))
 mgcd = D[0]
 
