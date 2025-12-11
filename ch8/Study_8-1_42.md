@@ -22,7 +22,10 @@
 ``` python
 import math
 N = int(input())
-A = [0] * (1000001)        # 소수 여부 저장 리스트
+A = [0] * (1000001)        # 소수 여부 저장 리스트 초기화
+
+for i in range(2,len(A)):  #1을 제외한 수를 입력
+    A[i]=i
 
 for i in range(2, len(A)):
     if A[i] == 0:          # 아직 걸러지지 않은 수 = 소수 후보
