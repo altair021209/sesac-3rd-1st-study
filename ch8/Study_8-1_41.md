@@ -63,5 +63,3 @@ for i in range(2, limit + 1):
 print(count)
 ```
 
-#생각해볼 지점:
-
