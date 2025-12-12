@@ -12,15 +12,33 @@ N, K가 주어졌을 때, K번째 지우는 수를 구하는 프로그램을 작
 
 
 ```python
+import sys
 
-N,K = map(int, input().split())
-number_list = [i+1 for i in range N]
+# 입력 받기
+N, K = map(int, sys.stdin.readline().split())
 
-for i in range(N):
-  for j in range(N-i):
+# 지워졌는지 확인할 체크 리스트 (인덱스 0~N까지 생성, 처음엔 모두 False)
+# False: 안 지워짐, True: 지워짐
+is_deleted = [False] * (N + 1)
+
+count = 0
+
+# 2부터 N까지 순회
+for i in range(2, N + 1):
+    # 아직 지워지지 않은 수라면 (그것은 소수 P)
+    if is_deleted[i] == False:
+        # P와 P의 배수들을 지워나감 (range(start, end, step))
+        for j in range(i, N + 1, i):
+            # 아직 안 지워진 수만 카운트
+            if is_deleted[j] == False:
+                is_deleted[j] = True # 지움 표시
+                count += 1
+                
+                # K번째로 지워진 수 발견 시 출력 후 종료
+                if count == K:
+                    print(j)
+                    sys.exit()
     
-
-
-
-
 ```
+
+
