@@ -20,45 +20,29 @@
 
 #코드 구현:
 ```python
-import sys
+import math
+min,max= map(int,input().split())
+A=[0]*(10000001)
 
-# 입력 받기 (A: 시작, B: 끝)
-A, B = map(int, sys.stdin.readline().split())
+for i in range(2,len(A)):
+    A[i]=i
+for i in range(2,int(math.sqrt(len(A))+1)):
+    if A[i] ==0:
+        continue
+    for j in range(i+i,len(A),i):
+        A[j] =0
 
-# 1. 에라토스테네스의 체 범위 설정
-# P^2 <= B 여야 하므로, P <= sqrt(B)
-limit = int(B ** 0.5)
+count =0
 
-# 2. 에라토스테네스의 체 초기화
-# is_prime[i]가 True면 i는 소수
-is_prime = [True] * (limit + 1)
-is_prime[0] = is_prime[1] = False
+for i in range(2,10000001):
+    if A[i] !=0:
+    temp = A[i]
+    while A[i] <=max/temp:
+        if A[i] >=min/temp:
+            count+=1
+        temp =temp *A[i]
 
-# 소수 구하기 (sqrt(limit)까지만 반복해도 됨)
-for i in range(2, int(limit ** 0.5) + 1):
-    if is_prime[i]:
-        for j in range(i * i, limit + 1, i):
-            is_prime[j] = False
-
-# 3. 거의 소수 개수 구하기
-count = 0
-
-# limit까지의 숫자 중 소수인 것만 탐색
-for i in range(2, limit + 1):
-    if is_prime[i]: # i가 소수라면
-        P = i
-        temp = P * P # P^2 부터 시작
-        
-        # P의 N제곱이 B보다 작거나 같은 동안 반복
-        while temp <= B:
-            # 범위 [A, B] 안에 들어오는지 확인
-            if temp >= A:
-                count += 1
-            
-            # 다음 제곱수 계산 (P^2 -> P^3 -> P^4 ...)
-            # 주의: temp * P가 너무 커져서 오버플로우가 날 수 있으나 
-            # 파이썬은 큰 정수를 자동 처리함. (타 언어는 주의 필요)
-            temp *= P
+print(count)
 
 print(count)
 ```
