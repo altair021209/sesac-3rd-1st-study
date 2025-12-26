@@ -1,6 +1,7 @@
 코드 구현
-```
-import math
+``` python
+
+import math 
 print("dd")
 
 ```
