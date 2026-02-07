@@ -12,7 +12,7 @@ N의 최대값이 15000이므로 시간복잡도는 O(nlogn)입니다. 정렬 �
 합이 M보다 작으면 → l++
 합이 M보다 크면 → r--
 
-'''python
+```python
 import sys
 input = sys.stdin.readline
 
