@@ -1,16 +1,16 @@
 
-J= 0] * 51
-ambability = [0] * 51
-= int(input())
-1: list(map(int, input(). split()))
-1=0
-tor i in range(O, M) :
-*= D[i]
+D= [0] * 51
+probability = [0] * 51
+M = int(input())
+D = list(map(int, input(). split()))
+T =0
+for i in range(O, M) :
+  T+= D[i]
 K= int(input ())
 ans = 0
 for i in range(0, M) :
-if D[1] >= K:
-probability[i] = 1
-for k in range(0, K) :
-probability[i] = probability[i] * (D[i] - k) / (T - k) #확률식
+  if D[1] >= K:
+    probability[i] = 1
+    for k in range(0, K) :
+    probability[i] = probability[i] * (D[i] - k) / (T - k) #확률식
 ans += probability[i]
